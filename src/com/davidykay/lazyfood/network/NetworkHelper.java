@@ -14,15 +14,19 @@ import com.davidykay.lazyfood.iface.SuccessCallback;
 import com.google.inject.Inject;
 
 public class NetworkHelper {
+  // private static final String HOST_NAME = "10.199.142.108";
+  // private static final String HOST_NAME = "www.davidykay.com";
+  private static final String HOST_NAME = "192.168.43.185";
 
-  private static final String serverAddress = "10.199.142.108/api/tray/";
-  private static final int serverPort = 8000;
+  //private static final String serverAddress = "10.199.142.108/api/tray/";
+  private static final String SERVER_ADDRESS = HOST_NAME;
+  private static final String SERVER_PATH = "/api/tray/";
 
+  private static final int SERVER_PORT = 8000;
 
   @Inject
   public NetworkHelper() {
   }
-
 
   public void orderTrayFromAPIAsync(int trayId,
                                     SuccessCallback success,
@@ -47,7 +51,7 @@ public class NetworkHelper {
 
       URL url;
       try {
-        url = new URL("http://" + serverAddress + ":" + String.valueOf(serverPort));
+        url = new URL("http://" + SERVER_ADDRESS + ":" + String.valueOf(SERVER_PORT) + SERVER_PATH);
       } catch (MalformedURLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
