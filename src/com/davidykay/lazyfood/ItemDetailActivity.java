@@ -1,12 +1,18 @@
 package com.davidykay.lazyfood;
 
+import roboguice.activity.RoboFragmentActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.davidykay.lazyfood.iface.FailureCallback;
+import com.davidykay.lazyfood.iface.SuccessCallback;
+import com.davidykay.lazyfood.network.NetworkHelper;
+import com.google.inject.Inject;
 
 /**
  * An activity representing a single Item detail screen. This
@@ -17,7 +23,13 @@ import android.widget.Toast;
  * This activity is mostly just a 'shell' activity containing nothing
  * more than a {@link ItemDetailFragment}.
  */
-public class ItemDetailActivity extends FragmentActivity {
+public class ItemDetailActivity extends RoboFragmentActivity {
+
+  private ItemDetailFragment mFragment;
+
+  @Inject private NetworkHelper mNetworkHelper;
+
+  private Context mContext = this;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +54,10 @@ public class ItemDetailActivity extends FragmentActivity {
       Bundle arguments = new Bundle();
       arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
                           getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
-      ItemDetailFragment fragment = new ItemDetailFragment();
-      fragment.setArguments(arguments);
+      mFragment = new ItemDetailFragment();
+      mFragment.setArguments(arguments);
       getSupportFragmentManager().beginTransaction()
-          .add(R.id.item_detail_container, fragment)
+          .add(R.id.item_detail_container, mFragment)
           .commit();
     }
   }
@@ -69,6 +81,26 @@ public class ItemDetailActivity extends FragmentActivity {
 
   public void onOrderClick(View v) {
     Toast.makeText(this, "Ordering...", Toast.LENGTH_SHORT).show();
+
+    // mNetworkHelper.orderTrayFromAPI(mFragment.getItem().getId());
+    mNetworkHelper.orderTrayFromAPIAsync(
+        mFragment.getItem().getId(),
+        new SuccessCallback() {
+
+          @Override
+          public void onSuccess() {
+            Toast.makeText(mContext, "Success!", Toast.LENGTH_SHORT).show();
+
+          }
+        },
+        new FailureCallback() {
+
+          @Override
+          public void onFailure(Exception ex) {
+            Toast.makeText(mContext, "Failure!", Toast.LENGTH_SHORT).show();
+
+          }
+        });
   }
 
 }

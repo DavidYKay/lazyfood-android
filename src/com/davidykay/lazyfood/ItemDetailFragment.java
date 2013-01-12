@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.davidykay.lazyfood.dummy.DummyContent;
 
@@ -60,5 +59,8 @@ public class ItemDetailFragment extends Fragment {
     return rootView;
   }
 
+  public DummyContent.DummyItem getItem() {
+    return mItem;
+  }
 
 }
