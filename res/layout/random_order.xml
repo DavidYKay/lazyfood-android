@@ -12,18 +12,18 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:padding="20dp"
-    android:text="This is your order:"
+    android:text="Ordering..."
     android:textSize="21dp" 
     />
 
-  <Button
-    android:id="@+id/review_data"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:padding="20dp"
-    android:text="Place Order"
-    android:textSize="21dp" 
-    android:onClick="onOrderClick" 
-    />
+  <!--<Button-->
+    <!--android:id="@+id/review_data"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="20dp"-->
+    <!--android:text="Place Order"-->
+    <!--android:textSize="21dp" -->
+    <!--android:onClick="onOrderClick" -->
+    <!--/>-->
 
 </LinearLayout>

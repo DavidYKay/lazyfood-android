@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -56,5 +57,12 @@ public class DummyContent {
     public int getId() {
       return Integer.parseInt(this.id);
     }
+  }
+
+  public static int getRandomId() {
+    Random generator = new Random();
+    Object[] values = ITEM_MAP.values().toArray();
+    DummyItem randomValue = (DummyItem) values[generator.nextInt(values.length)];
+    return randomValue.getId();
   }
 }

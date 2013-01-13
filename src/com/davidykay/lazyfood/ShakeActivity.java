@@ -81,10 +81,14 @@ public class ShakeActivity extends RoboActivity implements SensorEventListener {
         String speedString = "speed: " + speed;
 
         if (speed > SHAKE_THRESHOLD) {
+
+          onShakeDetected();
           String logMessage = "SHAKE detected w/ " + speedString;
 
           Log.d("sensor", logMessage);
           Toast.makeText(this, logMessage, Toast.LENGTH_SHORT).show();
+
+
         } else {
           String logMessage = "movement under threshold w/ " + speedString;
 
@@ -115,5 +119,9 @@ public class ShakeActivity extends RoboActivity implements SensorEventListener {
     startActivity(i);
   }
 
+  public void onShakeDetected() {
+    Intent i = new Intent(this, RandomOrderActivity.class);
+    startActivity(i);
+  }
 
 }
