@@ -24,7 +24,7 @@ public class ConfirmationActivity extends RoboActivity {
     Toast.makeText(this, logMessage, Toast.LENGTH_SHORT).show();
 
     // We're all done!
-    Intent intent = new Intent(this, ShakeActivity.class);
+    Intent intent = new Intent(this, MainMenuActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     startActivity(intent);

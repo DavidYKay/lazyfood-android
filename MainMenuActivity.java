@@ -13,7 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-public class ShakeActivity extends RoboActivity implements SensorEventListener {
+public class MainMenuActivity extends RoboActivity implements SensorEventListener {
 
   private static final float SHAKE_THRESHOLD = new BigDecimal("1E-5").floatValue();
   private SensorManager mSensorManager;

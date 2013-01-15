@@ -37,7 +37,7 @@
     </activity>
 
     <activity
-      android:name="com.davidykay.lazyfood.ShakeActivity"
+      android:name="com.davidykay.lazyfood.MainMenuActivity"
       android:label="@string/shake"
       >
       <intent-filter>
