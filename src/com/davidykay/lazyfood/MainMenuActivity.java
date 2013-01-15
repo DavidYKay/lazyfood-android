@@ -33,7 +33,6 @@ public class MainMenuActivity extends RoboActivity implements SensorEventListene
     setContentView(R.layout.main);
 
     mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-
   }
 
   @Override
@@ -56,7 +55,6 @@ public class MainMenuActivity extends RoboActivity implements SensorEventListene
   ////////////////////////////////////////
   // SensorEventListener
   ////////////////////////////////////////
-
 
   @Override
   public void onSensorChanged(SensorEvent event) {
