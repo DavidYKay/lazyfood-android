@@ -61,6 +61,12 @@
       android:label="@string/confirmation"
       >
     </activity>
+    
+    <activity
+      android:name="com.davidykay.lazyfood.OptionsActivity"
+      android:label="@string/options"
+      >
+    </activity>
 
 
 

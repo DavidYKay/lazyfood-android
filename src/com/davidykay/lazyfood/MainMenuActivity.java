@@ -10,6 +10,9 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -39,9 +42,9 @@ public class MainMenuActivity extends RoboActivity implements SensorEventListene
   public void onStart() {
     super.onStart();
 
-    mSensorManager.registerListener(this,
-                                    mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-                                    SensorManager.SENSOR_DELAY_NORMAL);
+    //mSensorManager.registerListener(this,
+    //                                mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+    //                                SensorManager.SENSOR_DELAY_NORMAL);
 
   }
 
@@ -49,7 +52,26 @@ public class MainMenuActivity extends RoboActivity implements SensorEventListene
   public void onStop() {
     super.onStop();
 
-    mSensorManager.unregisterListener(this);
+    //mSensorManager.unregisterListener(this);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.main_menu, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle item selection
+    switch (item.getItemId()) {
+      case R.id.options:
+        launchOptions();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 
   ////////////////////////////////////////
@@ -119,6 +141,15 @@ public class MainMenuActivity extends RoboActivity implements SensorEventListene
 
   public void onShakeDetected() {
     Intent i = new Intent(this, RandomOrderActivity.class);
+    startActivity(i);
+  }
+
+  ////////////////////////////////////////
+  // Navigation
+  ////////////////////////////////////////
+
+  private void launchOptions() {
+    Intent i = new Intent(this, OptionsActivity.class);
     startActivity(i);
   }
 
