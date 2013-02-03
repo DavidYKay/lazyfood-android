@@ -3,24 +3,10 @@ package com.davidykay.lazyfood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
-
-/**
- * An activity representing a list of Items. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link ItemDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
- * <p>
- * The activity makes heavy use of fragments. The list of items is a
- * {@link ItemListFragment} and the item details
- * (if present) is a {@link ItemDetailFragment}.
- * <p>
- * This activity also implements the required
- * {@link ItemListFragment.Callbacks} interface
- * to listen for item selections.
- */
 public class ItemListActivity extends FragmentActivity
 implements ItemListFragment.Callbacks {
 
@@ -46,4 +32,33 @@ implements ItemListFragment.Callbacks {
     startActivity(detailIntent);
 
   }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.manual_order, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle item selection
+    switch (item.getItemId()) {
+      case R.id.add_meal:
+        addMeal();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+
+  ////////////////////////////////////////
+  // Navigation
+  ////////////////////////////////////////
+
+  private void addMeal() {
+    Intent i = new Intent(this, MealEditActivity.class);
+    startActivity(i);
+  }
+
 }

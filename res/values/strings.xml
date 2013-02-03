@@ -11,5 +11,8 @@
     
     <string name="random_order">Random Order</string>
     <string name="confirmation">Confirmation</string>
+    
+    <string name="add_meal">Add Meal</string>
+    <string name="edit_meal">Edit Meal</string>
 
 </resources>

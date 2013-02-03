@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/rl"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:layout_marginBottom="0dp"
+  android:layout_marginLeft="0dp"
+  android:layout_marginRight="0dp"
+  android:layout_marginTop="0dp"
+  android:orientation="vertical"
+  android:padding="0dp" 
+
+  >
+
+  <Button
+    android:layout_centerInParent="true"
+    android:id="@+id/enter_data"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:text="Save Meal"
+    android:textSize="21dp" 
+    android:onClick="onSaveClick" 
+    />
+
+
+</RelativeLayout>
